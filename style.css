@@ -1,0 +1,112 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+.card-container {
+  background-color: white;
+  width: 350px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card-container:hover {
+  transform: scale(1.02);
+}
+
+.card-header img {
+  width: 120px;
+  height: 120px;
+  border-radius: 100%;
+  border: 4px solid #ffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: -30px;
+  margin-top: 10px;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-sosmed {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 25px;
+}
+
+.card-sosmed a {
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.card-sosmed a:hover {
+  color: #4caf50;
+}
+
+.tech-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.badge.html {
+  background-color: #e34f26;
+}
+.badge.css {
+  background-color: #1572b6;
+}
+.badge.js {
+  background-color: #f7df1e;
+  color: #333;
+}
+.badge.react {
+  background-color: #61dafb;
+  color: #333;
+}
+
+.btn-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+
+  /* Styling Visual */
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.btn-cta:hover {
+  background-color: #45a049;
+}
+
+.btn-cta i {
+  margin-right: 8px;
+  width: 18px;
+  height: 18px;
+}
