@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Naofal Anas | Web Developer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="#home" class="logo">Naofal<span>Dev</span>.</a>
+
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="menu-toggle" id="mobile-menu">
+        <i data-feather="menu"></i>
+      </div>
+    </nav>
+
+    <section id="home" class="hero">
+      <div class="hero-content reveal-text">
+        <h3>Halo, saya</h3>
+        <h1>Naofal Anas S.</h1>
+        <p>
+          Seorang <span class="highlight">Web Developer</span> yang fokus
+          menciptakan pengalaman digital modern, responsif, dan fungsional.
+        </p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn primary">Lihat Karya</a>
+          <a href="#contact" class="btn secondary">Hubungi Saya</a>
+        </div>
+      </div>
+      <div class="glow-effect"></div>
+    </section>
+
+    <section id="about" class="section">
+      <h2 class="section-title reveal-bottom">Tentang <span>Saya</span></h2>
+      <div class="about-container reveal-bottom">
+        <p class="about-text">
+          Saya adalah pengembang web yang berdedikasi untuk mengubah ide
+          kompleks menjadi antarmuka yang elegan. Menguasai alur kerja modern
+          dari desain hingga deployment.
+        </p>
+
+        <div class="skills-wrapper">
+          <h3>Tech Stack</h3>
+          <div class="skills-grid">
+            <div class="skill-tag"><i data-feather="code"></i> HTML5</div>
+            <div class="skill-tag"><i data-feather="layout"></i> CSS3</div>
+            <div class="skill-tag"><i data-feather="cpu"></i> JavaScript</div>
+            <div class="skill-tag"><i data-feather="layers"></i> AlpineJS</div>
+            <div class="skill-tag"><i data-feather="git-branch"></i> Git</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <h2 class="section-title reveal-bottom">Proyek <span>Terbaru</span></h2>
+      <div class="projects-grid">
+        <div class="project-card reveal-bottom">
+          <div class="card-image">
+            <img src="img/kedaikopiwebsite.png" alt="Kopi Senja Website" />
+            <div class="image-overlay">
+              <a href="https://tutorial-otodidak2.vercel.app/" class="btn-view"
+                >Lihat Detail</a
+              >
+            </div>
+          </div>
+          <div class="card-content">
+            <h3>Kopi Senja Premium</h3>
+            <p>
+              Website Coffee Shop modern dengan fitur keranjang belanja
+              interaktif dan animasi scroll yang halus.
+            </p>
+            <div class="card-tags">
+              <span>HTML</span><span>CSS</span><span>AlpineJS</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/Naofalanas/tutorial-otodidak2"
+                ><i data-feather="github"></i> Code</a
+              >
+              <a href="https://tutorial-otodidak2.vercel.app/"
+                ><i data-feather="external-link"></i> Demo</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal-bottom" style="transition-delay: 100ms">
+          <div class="card-image">
+            <img
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              alt="Dashboard"
+            />
+            <div class="image-overlay">
+              <a href="#" class="btn-view">Lihat Detail</a>
+            </div>
+          </div>
+          <div class="card-content">
+            <h3>E-Commerce Dashboard</h3>
+            <p>
+              Dashboard admin untuk manajemen data penjualan dengan tampilan
+              grafik realtime.
+            </p>
+            <div class="card-tags"><span>React</span><span>NodeJS</span></div>
+            <div class="card-links">
+              <a href="#"><i data-feather="github"></i> Code</a>
+              <a href="#"><i data-feather="external-link"></i> Demo</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal-bottom" style="transition-delay: 200ms">
+          <div class="card-image">
+            <img
+              src="https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              alt="Weather App"
+            />
+            <div class="image-overlay">
+              <a href="#" class="btn-view">Lihat Detail</a>
+            </div>
+          </div>
+          <div class="card-content">
+            <h3>Weather Forecast</h3>
+            <p>
+              Aplikasi cuaca sederhana yang mendeteksi lokasi pengguna dan
+              menampilkan suhu terkini.
+            </p>
+            <div class="card-tags"><span>API</span><span>JavaScript</span></div>
+            <div class="card-links">
+              <a href="#"><i data-feather="github"></i> Code</a>
+              <a href="#"><i data-feather="external-link"></i> Demo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <div class="footer-content reveal-bottom">
+        <h2>Mari <span>Berkolaborasi</span></h2>
+        <p>Punya ide proyek? Mari wujudkan bersama.</p>
+        <div class="social-links">
+          <a href="#" class="social-item"><i data-feather="linkedin"></i></a>
+          <a href="#" class="social-item"><i data-feather="github"></i></a>
+          <a href="#" class="social-item"><i data-feather="mail"></i></a>
+          <a href="#" class="social-item"><i data-feather="instagram"></i></a>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 Naofal Anas Setianto. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      feather.replace();
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
