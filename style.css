@@ -9,6 +9,35 @@
   --glass: rgba(255, 255, 255, 0.03);
   --border: rgba(255, 255, 255, 0.1);
 }
+/* --- CUSTOM SCROLLBAR & SELECTION --- */
+
+/* Warna blok teks jadi Primary */
+::selection {
+  background: var(--primary);
+  color: #000;
+}
+
+/* Lebar scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track (jalur scroll) */
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+/* Handle (batang scroll) */
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 5px;
+  border: 2px solid #050505; /* Kasih jarak dikit biar elegan */
+}
+
+/* Pas di-hover handle-nya jadi terang */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
 
 * {
   margin: 0;
@@ -26,6 +55,42 @@ body {
   overflow-x: hidden;
   line-height: 1.6;
 }
+/* --- GLOBAL BUTTON STYLES (Wajib Ada) --- */
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: 0.3s;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none; /* Hapus garis bawah link */
+}
+
+.btn.primary {
+  background: var(--primary);
+  color: #050505;
+  box-shadow: 0 4px 15px rgba(0, 210, 211, 0.3);
+  border: none;
+}
+
+.btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 210, 211, 0.4);
+  color: #000;
+}
+
+.btn.secondary {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-main);
+}
+
+.btn.secondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: rgba(0, 210, 211, 0.05);
+}
 
 /* --- NAVBAR --- */
 .navbar {
@@ -42,6 +107,13 @@ body {
   border-bottom: 1px solid var(--border);
   z-index: 1000;
   transition: 0.3s;
+}
+/* Tambahan untuk class active */
+.nav-links a.active {
+  color: var(--primary);
+}
+.nav-links a.active::after {
+  width: 100%; /* Garis bawah menetap */
 }
 
 .logo {
@@ -64,9 +136,15 @@ body {
   transition: 0.3s;
   position: relative;
 }
+.nav-links a.active {
+  color: var(--primary);
+  font-weight: 700;
+}
+.nav-links a.active::after {
+  width: 100%; /* Garis bawah menetap */
+}
 .nav-links a:hover {
   color: var(--primary);
-  text-shadow: 0 0 10px var(--primary-glow);
 }
 .nav-links a::after {
   content: "";
@@ -87,84 +165,190 @@ body {
   color: var(--text-main);
 }
 
-/* --- HERO --- */
+/* --- HERO SECTION (REMASTERED) --- */
 .hero {
   min-height: 100vh;
-  display: flex;
+  display: grid; /* Ganti flex jadi grid biar gampang atur 2 kolom */
+  grid-template-columns: 1.2fr 1fr; /* Kiri agak lebar dikit */
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  gap: 2rem;
   padding: 0 7%;
   position: relative;
   overflow: hidden;
 }
-.glow-effect {
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  background: var(--primary);
-  filter: blur(150px);
-  opacity: 0.15;
-  border-radius: 50%;
-  z-index: -1;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
+/* Penyesuaian Teks */
+.hero-content {
+  text-align: left; /* Rata kiri biar enak dibaca */
+  z-index: 2;
 }
+
 .hero h3 {
   font-size: 1.5rem;
   color: var(--primary);
   margin-bottom: 0.5rem;
   font-weight: 600;
+  display: inline-block;
+  background: rgba(0, 210, 211, 0.1); /* Highlight tipis di belakang 'Halo' */
+  padding: 5px 15px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 210, 211, 0.2);
 }
+
 .hero h1 {
-  font-size: 4.5rem;
+  font-size: 4rem;
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 1.5rem;
-  background: linear-gradient(to right, #fff, #a0a0a0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #fff;
 }
+
 .hero p {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--text-muted);
-  max-width: 600px;
-  margin: 0 auto 2.5rem;
+  max-width: 500px; /* Batasi lebar teks biar gak kepanjangan */
+  margin-bottom: 2.5rem;
 }
-.highlight {
-  color: var(--primary);
-  font-weight: 600;
-}
+
 .hero-buttons {
   display: flex;
   gap: 1.5rem;
-  justify-content: center;
+  justify-content: flex-start; /* Tombol rata kiri */
 }
-.btn {
-  padding: 12px 30px;
-  border-radius: 50px;
-  font-weight: 600;
-  transition: 0.3s;
-  font-size: 1rem;
-}
-.btn.primary {
-  background: var(--primary);
-  color: #000;
-  box-shadow: 0 0 20px var(--primary-glow);
-}
-.btn.primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 30px var(--primary-glow);
-}
-.btn.secondary {
-  background: transparent;
-  border: 2px solid var(--border);
-  color: var(--text-main);
-}
-.btn.secondary:hover {
-  border-color: var(--primary);
+/* --- TYPING EFFECT --- */
+.txt-type > .txt {
   color: var(--primary);
+  font-weight: 600;
+  border-right: 0.2rem solid var(--primary); /* Garis kursor */
+  padding-right: 5px;
+  animation: blink 0.7s infinite; /* Animasi kedip */
+}
+
+@keyframes blink {
+  0% {
+    border-color: var(--primary);
+  }
+  50% {
+    border-color: transparent;
+  } /* Hilang */
+  100% {
+    border-color: var(--primary);
+  }
+}
+
+/* Area Foto Profil */
+.hero-image {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.img-box {
+  width: 380px;
+  height: 380px;
+  background: var(--card-bg);
+  border-radius: 50%; /* Lingkaran */
+  position: relative;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  /* Efek Shadow Aura */
+  box-shadow: 0 0 50px rgba(0, 210, 211, 0.15);
+  animation: floatImage 4s ease-in-out infinite; /* Foto bakal melayang dikit */
+}
+
+.img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Grayscale dikit biar blend sama tema gelap, pas di-hover baru berwarna */
+  filter: grayscale(30%);
+  transition: 0.5s;
+}
+
+.img-box:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+/* Background Glow di belakang Hero */
+.glow-effect {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: var(--primary);
+  filter: blur(200px);
+  opacity: 0.15;
+  border-radius: 50%;
+  z-index: 0;
+  top: 50%;
+  right: -100px; /* Pindahin glow ke arah kanan (belakang foto) */
+  transform: translateY(-50%);
+}
+
+/* Animasi Melayang */
+@keyframes floatImage {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  } /* Naik dikit */
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* --- RESPONSIVE UPDATE (PENTING) --- */
+@media (max-width: 991px) {
+  .hero {
+    grid-template-columns: 1fr; /* Balik ke 1 kolom di Tablet/HP */
+    text-align: center;
+    padding-top: 8rem; /* Kasih jarak dari navbar */
+    gap: 3rem;
+  }
+
+  .hero-content {
+    text-align: center;
+    order: 2; /* Teks di bawah foto kalau di HP */
+  }
+
+  .hero-image {
+    order: 1; /* Foto di atas kalau di HP */
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .hero p {
+    margin: 0 auto 2.5rem; /* Tengahin teks p */
+  }
+
+  .hero-buttons {
+    justify-content: center; /* Tengahin tombol */
+  }
+
+  .img-box {
+    width: 300px;
+    height: 300px;
+  }
+
+  .glow-effect {
+    top: 30%;
+    right: 50%;
+    transform: translate(50%, -50%); /* Tengahin glow di HP */
+  }
+}
+
+@media (max-width: 480px) {
+  .img-box {
+    width: 250px;
+    height: 250px;
+  }
+  .hero h1 {
+    font-size: 2.5rem;
+  }
 }
 
 /* --- SECTIONS --- */
@@ -224,7 +408,7 @@ body {
   background: rgba(0, 210, 211, 0.1);
 }
 
-/* --- PROJECTS (NEW IMAGE STYLE) --- */
+/* --- PROJECTS (PREMIUM GLASS STYLE) --- */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -232,18 +416,22 @@ body {
 }
 
 .project-card {
-  background: var(--card-bg);
+  background: rgba(18, 18, 18, 0.6); /* Lebih transparan dikit */
+  backdrop-filter: blur(10px); /* Efek blur di belakang kartu */
   border: 1px solid var(--border);
-  border-radius: 20px;
-  overflow: hidden; /* Penting agar gambar tidak keluar */
-  transition: 0.4s;
+  border-radius: 16px; /* Radius lebih sopan */
+  overflow: hidden;
+  transition: all 0.4s ease;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Efek Hover di Card: Border nyala + Shadow halus */
 .project-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-8px);
   border-color: var(--primary);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 /* Area Gambar */
@@ -252,27 +440,28 @@ body {
   height: 220px;
   position: relative;
   overflow: hidden;
+  border-bottom: 1px solid var(--border); /* Pemisah halus antara gambar & konten */
 }
 
 .card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s ease;
 }
 
 .project-card:hover .card-image img {
-  transform: scale(1.1); /* Efek Zoom saat hover */
+  transform: scale(1.05); /* Zoom in dikit aja, jangan lebay */
 }
 
-/* Overlay Hitam saat Hover */
+/* Overlay Hitam saat Hover (Disederhanakan) */
 .image-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -285,13 +474,21 @@ body {
 }
 
 .btn-view {
-  padding: 10px 20px;
-  background: var(--primary);
-  color: #000;
-  border-radius: 30px;
-  font-weight: bold;
+  padding: 8px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 0.9rem;
   transform: translateY(20px);
   transition: 0.3s;
+}
+
+.btn-view:hover {
+  background: var(--primary);
+  color: #000;
 }
 
 .project-card:hover .btn-view {
@@ -301,43 +498,71 @@ body {
 /* Konten Card */
 .card-content {
   padding: 1.5rem;
+  flex-grow: 1; /* Biar tinggi kartu seragam */
+  display: flex;
+  flex-direction: column;
 }
+
 .card-content h3 {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   margin-bottom: 0.5rem;
+  color: var(--text-main);
 }
+
 .card-content p {
   color: var(--text-muted);
   font-size: 0.95rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
   line-height: 1.6;
+  flex-grow: 1;
 }
+
+/* Tags yang lebih Clean (Gak item blok lagi) */
 .card-tags {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   margin-bottom: 1.5rem;
   flex-wrap: wrap;
 }
+
 .card-tags span {
-  font-size: 0.8rem;
-  background: #000;
-  padding: 5px 10px;
-  border-radius: 5px;
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.05); /* Transparan */
+  padding: 4px 12px;
+  border-radius: 20px; /* Pill shape */
   color: var(--text-muted);
-  border: 1px solid #333;
-}
-.card-links a {
-  color: var(--text-main);
-  font-size: 0.9rem;
-  margin-right: 1.5rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   transition: 0.3s;
 }
+
+.project-card:hover .card-tags span {
+  border-color: var(--primary); /* Border nyala dikit pas card di-hover */
+  color: #fff;
+}
+
+/* Link Actions */
+.card-links {
+  display: flex;
+  gap: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border); /* Garis pemisah link */
+}
+
+.card-links a {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
 .card-links a:hover {
   color: var(--primary);
+  transform: translateX(3px); /* Gerak dikit pas di hover */
 }
+
 .card-links i {
   width: 16px;
   height: 16px;
@@ -388,6 +613,118 @@ footer p {
   font-size: 0.9rem;
   color: var(--text-muted);
 }
+/* --- CONTACT SECTION (NEW) --- */
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr; /* Info kiri lebih kecil */
+  gap: 4rem;
+  background: var(--card-bg);
+  padding: 3rem;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+}
+
+/* Kolom Kiri */
+.contact-info h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.contact-info p {
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.contact-details .item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+.contact-details i {
+  color: var(--primary);
+}
+
+.social-links-left {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.social-links-left a {
+  width: 45px;
+  height: 45px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: 0.3s;
+}
+
+.social-links-left a:hover {
+  background: var(--primary);
+  color: #000;
+  border-color: var(--primary);
+}
+
+/* Kolom Kanan (Form) */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(0, 210, 211, 0.05);
+}
+
+#form-status {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Responsive buat Contact */
+@media (max-width: 768px) {
+  .contact-container {
+    grid-template-columns: 1fr; /* Tumpuk ke bawah di HP */
+    padding: 2rem;
+    gap: 3rem;
+  }
+}
+
+/* Footer Sederhana */
+footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid var(--border);
+  margin-top: 4rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
 
 /* --- ANIMATION --- */
 .reveal-text,
@@ -430,5 +767,42 @@ footer p {
   }
   .projects-grid {
     grid-template-columns: 1fr;
+  }
+}
+/* --- PRELOADER STYLE --- */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #050505;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease-out, visibility 0.5s;
+}
+
+/* Kalau udah kelar loading, class ini bakal aktif */
+#preloader.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Animasi Spinner */
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--primary);
+  animation: spin 1s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(0, 210, 211, 0.2);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }

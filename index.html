@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div id="preloader">
+      <div class="loader"></div>
+    </div>
     <nav class="navbar">
       <a href="#home" class="logo">Naofal<span>Dev</span>.</a>
 
@@ -37,14 +40,27 @@
         <h3>Halo, saya</h3>
         <h1>Naofal Anas S.</h1>
         <p>
-          Seorang <span class="highlight">Web Developer</span> yang fokus
-          menciptakan pengalaman digital modern, responsif, dan fungsional.
+          Seorang
+          <span
+            class="txt-type"
+            data-wait="3000"
+            data-words='["Web Developer", "UI/UX Enthusiast", "Freelancer"]'
+          ></span>
+          yang fokus menciptakan pengalaman digital modern, responsif, dan
+          fungsional.
         </p>
         <div class="hero-buttons">
           <a href="#projects" class="btn primary">Lihat Karya</a>
           <a href="#contact" class="btn secondary">Hubungi Saya</a>
         </div>
       </div>
+
+      <div class="hero-image reveal-text">
+        <div class="img-box">
+          <img src="img/profile.png" alt="Naofal Anas" />
+        </div>
+      </div>
+
       <div class="glow-effect"></div>
     </section>
 
@@ -152,33 +168,96 @@
       </div>
     </section>
 
-    <footer id="contact">
-      <div class="footer-content reveal-bottom">
-        <h2>Mari <span>Berkolaborasi</span></h2>
-        <p>Punya ide proyek? Mari wujudkan bersama.</p>
-        <div class="social-links">
-          <a
-            href="https://www.linkedin.com/in/naofal-anas-setianto"
-            class="social-item"
-            ><i data-feather="linkedin"></i
-          ></a>
-          <a href="https://github.com/Naofalanas" class="social-item"
-            ><i data-feather="github"></i
-          ></a>
-          <a href="mailto:anasnoval96@gmail.com" class="social-item"
-            ><i data-feather="mail"></i
-          ></a>
-          <a href="https://www.instagram.com/novalanass" class="social-item"
-            ><i data-feather="instagram"></i
-          ></a>
-          <a href="https://wa.me/085777136377" class="social-item"
-            ><i data-feather="phone"></i
-          ></a>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        // GANTI 'YOUR_PUBLIC_KEY' DENGAN PUBLIC KEY LU DARI EMAILJS
+        emailjs.init("z0e0Fx7RNHI36wDz8");
+      })();
+    </script>
+
+    <section id="contact" class="section">
+      <h2 class="section-title reveal-bottom">Hubungi <span>Saya</span></h2>
+
+      <div class="contact-container reveal-bottom">
+        <div class="contact-info">
+          <h3>Let's Talk!</h3>
+          <p>
+            Punya proyek menarik atau sekadar ingin menyapa? Isi form di samping
+            atau hubungi saya lewat sosial media.
+          </p>
+
+          <div class="contact-details">
+            <div class="item">
+              <i data-feather="mail"></i>
+              <span>anasnoval96@gmail.com</span>
+            </div>
+            <div class="item">
+              <i data-feather="map-pin"></i>
+              <span>Indonesia</span>
+            </div>
+          </div>
+
+          <div class="social-links-left">
+            <a href="https://github.com/Naofalanas"
+              ><i data-feather="github"></i
+            ></a>
+            <a href="https://www.linkedin.com/in/naofal-anas-setianto"
+              ><i data-feather="linkedin"></i
+            ></a>
+            <a href="https://www.instagram.com/novalanass"
+              ><i data-feather="instagram"></i
+            ></a>
+            <a href="https://wa.me/085777136377"
+              ><i data-feather="phone"></i
+            ></a>
+          </div>
         </div>
+
+        <form id="contact-form" class="contact-form">
+          <div class="form-group">
+            <input
+              type="text"
+              name="user_name"
+              id="name"
+              required
+              placeholder="Nama Anda"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="email"
+              name="user_email"
+              id="email"
+              required
+              placeholder="Email Anda"
+            />
+          </div>
+          <div class="form-group">
+            <textarea
+              name="message"
+              id="message"
+              rows="5"
+              required
+              placeholder="Tulis pesan di sini..."
+            ></textarea>
+          </div>
+          <button type="submit" class="btn primary" id="btn-submit">
+            Kirim Pesan
+          </button>
+          <p id="form-status"></p>
+        </form>
       </div>
-      <div class="copyright">
-        <p>&copy; 2025 Naofal Anas Setianto. All Rights Reserved.</p>
-      </div>
+    </section>
+
+    <footer>
+      <p>
+        &copy; <span id="year"></span> Naofal Anas Setianto. All Rights
+        Reserved.
+      </p>
     </footer>
 
     <script>
