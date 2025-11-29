@@ -15,6 +15,21 @@
     <script src="https://unpkg.com/feather-icons"></script>
 
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=inter@400,500&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+      defer
+    ></script>
+
+    <script src="script.js" defer></script>
   </head>
   <body>
     <div id="preloader">
@@ -36,7 +51,7 @@
     </nav>
 
     <section id="home" class="hero">
-      <div class="hero-content reveal-text">
+      <div class="hero-content">
         <h3>Halo, saya</h3>
         <h1>Naofal Anas S.</h1>
         <p>
@@ -55,7 +70,7 @@
         </div>
       </div>
 
-      <div class="hero-image reveal-text">
+      <div class="hero-image">
         <div class="img-box">
           <img src="img/profile.png" alt="Naofal Anas" />
         </div>
@@ -65,8 +80,8 @@
     </section>
 
     <section id="about" class="section">
-      <h2 class="section-title reveal-bottom">Tentang <span>Saya</span></h2>
-      <div class="about-container reveal-bottom">
+      <h2 class="section-title">Tentang <span>Saya</span></h2>
+      <div class="about-container">
         <p class="about-text">
           Saya adalah pengembang web yang berdedikasi untuk mengubah ide
           kompleks menjadi antarmuka yang elegan. Menguasai alur kerja modern
@@ -75,21 +90,42 @@
 
         <div class="skills-wrapper">
           <h3>Tech Stack</h3>
-          <div class="skills-grid">
-            <div class="skill-tag"><i data-feather="code"></i> HTML5</div>
-            <div class="skill-tag"><i data-feather="layout"></i> CSS3</div>
-            <div class="skill-tag"><i data-feather="cpu"></i> JavaScript</div>
-            <div class="skill-tag"><i data-feather="layers"></i> AlpineJS</div>
-            <div class="skill-tag"><i data-feather="git-branch"></i> Git</div>
+          <div class="marquee-container">
+            <div class="marquee-content">
+              <div class="skill-item"><i data-feather="code"></i> HTML5</div>
+              <div class="skill-item"><i data-feather="layout"></i> CSS3</div>
+              <div class="skill-item">
+                <i data-feather="cpu"></i> JavaScript
+              </div>
+              <div class="skill-item">
+                <i data-feather="layers"></i> AlpineJS
+              </div>
+              <div class="skill-item">
+                <i data-feather="git-branch"></i> Git
+              </div>
+              <div class="skill-item"><i data-feather="wind"></i> Tailwind</div>
+              <div class="skill-item"><i data-feather="code"></i> HTML5</div>
+              <div class="skill-item"><i data-feather="layout"></i> CSS3</div>
+              <div class="skill-item">
+                <i data-feather="cpu"></i> JavaScript
+              </div>
+              <div class="skill-item">
+                <i data-feather="layers"></i> AlpineJS
+              </div>
+              <div class="skill-item">
+                <i data-feather="git-branch"></i> Git
+              </div>
+              <div class="skill-item"><i data-feather="wind"></i> Tailwind</div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <section id="projects" class="section">
-      <h2 class="section-title reveal-bottom">Proyek <span>Terbaru</span></h2>
+      <h2 class="section-title">Proyek <span>Terbaru</span></h2>
       <div class="projects-grid">
-        <div class="project-card reveal-bottom">
+        <div class="project-card">
           <div class="card-image">
             <img src="img/kedaikopiwebsite.png" alt="Kopi Senja Website" />
             <div class="image-overlay">
@@ -118,7 +154,7 @@
           </div>
         </div>
 
-        <div class="project-card reveal-bottom" style="transition-delay: 100ms">
+        <div class="project-card" style="transition-delay: 100ms">
           <div class="card-image">
             <img src="img/dashboard1.png" alt="Dashboard" />
             <div class="image-overlay">
@@ -148,7 +184,7 @@
           </div>
         </div>
 
-        <div class="project-card reveal-bottom">
+        <div class="project-card">
           <div class="card-image">
             <img src="img/sslaptopcrypto.png" alt="CryptoApp" />
             <div class="image-overlay">
@@ -195,9 +231,9 @@
     </script>
 
     <section id="contact" class="section">
-      <h2 class="section-title reveal-bottom">Hubungi <span>Saya</span></h2>
+      <h2 class="section-title">Hubungi <span>Saya</span></h2>
 
-      <div class="contact-container reveal-bottom">
+      <div class="contact-container">
         <div class="contact-info">
           <h3>Let's Talk!</h3>
           <p>
@@ -275,9 +311,12 @@
       </p>
     </footer>
 
+    <a href="#" class="back-to-top" id="backToTop">
+      <i data-feather="arrow-up"></i>
+    </a>
+
     <script>
       feather.replace();
     </script>
-    <script src="script.js"></script>
   </body>
 </html>

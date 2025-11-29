@@ -55,6 +55,31 @@ body {
   overflow-x: hidden;
   line-height: 1.6;
 }
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg"); /* Cari asset noise svg */
+  opacity: 0.05; /* Sangat tipis */
+  pointer-events: none;
+  z-index: 9999;
+}
+
+h1,
+h2,
+h3,
+.logo {
+  font-family: "Clash Display", sans-serif;
+  letter-spacing: 0.5px;
+}
+body,
+p,
+a {
+  font-family: "Inter", sans-serif;
+}
 /* --- GLOBAL BUTTON STYLES (Wajib Ada) --- */
 .btn {
   display: inline-block;
@@ -411,20 +436,34 @@ body {
 /* --- PROJECTS (PREMIUM GLASS STYLE) --- */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2.5rem;
+  grid-template-columns: repeat(3, 1fr); /* 3 Kolom */
+  grid-auto-rows: 250px; /* Tinggi dasar */
+  gap: 1.5rem;
 }
 
+/* Kartu biasa */
 .project-card {
-  background: rgba(18, 18, 18, 0.6); /* Lebih transparan dikit */
-  backdrop-filter: blur(10px); /* Efek blur di belakang kartu */
-  border: 1px solid var(--border);
-  border-radius: 16px; /* Radius lebih sopan */
-  overflow: hidden;
-  transition: all 0.4s ease;
-  position: relative;
-  display: flex;
-  flex-direction: column;
+  /* Hapus backdrop-filter yang terlalu buram, ganti solid color dengan opacity sangat rendah + noise */
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Kartu Spesial (Misal project unggulan) */
+.project-card:nth-child(1) {
+  grid-column: span 2; /* Melebar 2 kolom */
+  grid-row: span 2; /* Memanjang ke bawah */
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+  .project-card:nth-child(1) {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
 }
 
 /* Efek Hover di Card: Border nyala + Shadow halus */
@@ -726,19 +765,6 @@ footer {
   font-size: 0.9rem;
 }
 
-/* --- ANIMATION --- */
-.reveal-text,
-.reveal-bottom {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
-}
-.reveal-text.active,
-.reveal-bottom.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
   .navbar {
@@ -805,4 +831,89 @@ footer {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Skills Marquee */
+.marquee-container {
+  overflow: hidden; /* Sembunyikan yang keluar layar */
+  white-space: nowrap;
+  position: relative;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  ); /* Fade kiri-kanan */
+  padding: 2rem 0;
+}
+
+.marquee-content {
+  display: inline-flex;
+  gap: 2rem;
+  animation: scroll 20s linear infinite; /* Jalan terus */
+}
+
+/* Pause pas di-hover (biar bisa dibaca) */
+.marquee-container:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px 25px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.skill-item:hover {
+  border-color: var(--primary);
+  color: #fff;
+  background: rgba(0, 210, 211, 0.1);
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  } /* Geser setengah karena kita duplikat konten */
+}
+
+/* Back to top untuk scorll ke atas*/
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: var(--primary);
+  color: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  opacity: 0; /* Awalnya ngumpet */
+  visibility: hidden;
+  transition: 0.3s;
+  z-index: 999;
+  box-shadow: 0 5px 15px rgba(0, 210, 211, 0.4);
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  transform: translateY(-5px);
 }
